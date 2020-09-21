@@ -9,7 +9,7 @@ import { User } from './models/user.model';
 export class UsersService {
 
   private _users = new BehaviorSubject<User[]>([]);
-  private store: {users: User[]} = {users:[]};
+  public store: {users: User[]} = {users:[]};
   public id;
   readonly users = this._users.asObservable();
   
@@ -20,9 +20,9 @@ export class UsersService {
   loadUserData():void{
     this.http.get<User[]>('http://localhost:3000/users').subscribe(
       data => {
+        //this.id = Math.max.apply(Math,data.map(obj => obj.id))
         this.store.users = data;
         this._users.next(Object.assign({}, this.store).users);
-        this.id = Math.max.apply(Math,data.map(obj => obj.id))
       },
       error => console.log('error load users data')
     )

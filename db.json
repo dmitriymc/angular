@@ -1,13 +1,6 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "name surname 1",
-      "email": "gmail1@gmail.com",
-      "phone": "0551234567",
-      "location": "Kiev"
-    },
-    {
       "id": 2,
       "name": "NAME SURNAME 2",
       "email": "mail2@mail.com",
@@ -34,6 +27,48 @@
       "email": "gmail5@gmail.com",
       "phone": "0123456789",
       "location": "Lviv"
+    },
+    {
+      "id": 7,
+      "name": "qwe",
+      "email": "qwe@qwe",
+      "phone": "1231245145",
+      "location": "qwe"
+    },
+    {
+      "id": 8,
+      "name": "qwewqrqwr",
+      "email": "qwe@qwe",
+      "phone": "1232142141",
+      "location": "wqeqweqweqw"
+    },
+    {
+      "id": 9,
+      "name": "qwewqrqwr",
+      "email": "qwe@qwe",
+      "phone": "1232142141",
+      "location": "wqeqweqweqw"
+    },
+    {
+      "id": 10,
+      "name": "qwe",
+      "email": "qwe@qwe",
+      "phone": "2131242142",
+      "location": "qwe"
+    },
+    {
+      "id": 11,
+      "name": "qwe",
+      "email": "qwe@qwe",
+      "phone": "2131242142",
+      "location": "qwe"
+    },
+    {
+      "id": 12,
+      "name": "qwe",
+      "email": "qwe@qwe",
+      "phone": "2131242142",
+      "location": "qwe"
     }
   ]
 }
