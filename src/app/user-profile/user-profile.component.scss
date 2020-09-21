@@ -1,0 +1,49 @@
+h2{
+    a{
+        color:#fff;
+        opacity:0.75;
+
+        &:hover{
+            opacity:1;
+        }
+    }
+}
+
+.nav{
+    justify-content: space-between;
+    align-items: center;
+
+    button{
+        padding:10px;
+        background: none;
+        border: none;
+        color:#fff;
+
+        &:hover{
+            opacity:0.75;
+        }
+    }
+}
+
+.form-control:disabled{
+    background:none;
+    border:none;
+    color:#fff;
+}
+
+.btn{
+    background-color:#3DFF8A;
+    color:#000;
+    border:1px solid transparent;
+
+    &:hover{
+        background:none;
+        border-color:#3DFF8A;
+        color:#3DFF8A;
+    }
+
+    &:disabled{
+        opacity:0;
+    }
+}
+

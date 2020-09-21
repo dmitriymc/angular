@@ -1,0 +1,46 @@
+<div class="user-form">
+    <form (ngSubmit)="onSubmit(newUserForm)" class="needs-validation" #newUserForm="ngForm" novalidate >
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" placeholder="Your name" [ngClass]="{ 'is-invalid': newUserForm.submitted && name.invalid }" class="form-input form-control" id="name" required name="name" #name="ngModel" ngModel>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" placeholder="Your email" email [ngClass]="{ 'is-invalid': newUserForm.submitted && email.invalid }" class="form-input form-control" id="email" required name="email" #email="ngModel" ngModel>
+        </div>
+        <div *ngIf="newUserForm.submitted && email.invalid" class="validation-error">
+            <div *ngIf="email.errors.email">Must be a valid email address</div>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" pattern="^[0-9]*$" placeholder="055-55-55-555" [ngClass]="{ 'is-invalid': newUserForm.submitted && phone.invalid }" class="form-input form-control" id="phone" required name="phone" #phone="ngModel" ngModel minlength="10" maxlength="10"> 
+            <div *ngIf="newUserForm.submitted && phone.invalid" class="validation-error">
+                <div *ngIf="phone.errors && phone.errors.pattern || phone.errors.maxlength || phone.errors.minlength">Must be a valid phone number with 10 numbers</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="location">Location</label>
+            <input type="text" placeholder="Your location" [ngClass]="{ 'is-invalid': newUserForm.submitted && location.invalid }" class="form-input form-control" id="location" required name="location" #location="ngModel" ngModel>
+        </div>
+        <div class="form-group">
+            <button type="submit" ngbTooltip="Click to create new user profile" placement="right" class="btn btn-default">Create</button>
+        </div>
+    </form>
+    <p>
+        <ngb-alert *ngIf="intro" type="info" (close)="closeIntro()">
+          <strong>
+            Fill in the all fields correctly
+          </strong>
+        </ngb-alert>
+        <ngb-alert type="primary" [dismissible]="false" *ngIf="newUserForm.submitted && !newUserForm.form.valid">
+            <strong>
+                Please fill in all fields
+            </strong>
+        </ngb-alert>
+        <ngb-alert type="success" [dismissible]="false" *ngIf="newUserForm.submitted && newUserForm.form.valid">
+            <strong>
+                New profile created
+            </strong>
+        </ngb-alert>
+    </p>
+</div>

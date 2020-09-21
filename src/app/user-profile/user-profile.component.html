@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <h2><a routerLink="">Back to users</a></h2>
+    </div>
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        
+        <div class="profile-container" *ngIf="profile | async as profile">
+            <div class="nav">
+                <h2>Profile</h2>
+                <div class="profile-ui">
+                    <button ngbTooltip="Click to edit user profile" (click)="formActive()" placement="bottom" class="edit"><fa-icon [icon]="faWrench"></fa-icon></button>
+                    <button ngbTooltip="Click to remove user profile" (click)="removeProfile(profile.id)" placement="bottom" class="remove"><fa-icon [icon]="faTrashAlt"></fa-icon></button>
+                </div>
+            </div>
+            <div class="user-profile">
+                <div class="user-form user-profile-form">
+                    <form (ngSubmit)="onSubmit(updateUserForm,profile.id)" #updateUserForm="ngForm" class="needs-validation" novalidate>
+                        <fieldset [disabled]="!showForm">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" placeholder="Your name" [ngClass]="{ 'is-invalid': updateUserForm.submitted && name.invalid }" class="form-input form-control" name="name" id="name" #name="ngModel" required [(ngModel)]="profile.name" />
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="text" email placeholder="Your email" [ngClass]="{ 'is-invalid': updateUserForm.submitted && email.invalid }" class="form-input form-control" name="email" id="email" #email="ngModel" required [(ngModel)]="profile.email" />
+                                <div *ngIf="updateUserForm.submitted && email.invalid" class="validation-error">
+                                    <div *ngIf="email.errors.email">Must be a valid email address</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" placeholder="055-55-55-555" pattern="^[0-9]*$" [ngClass]="{ 'is-invalid': updateUserForm.submitted && phone.invalid }" class="form-input form-control" name="phone" id="phone" #phone="ngModel" minlength="10" maxlength="10" required [(ngModel)]="profile.phone" />
+                                <div *ngIf="updateUserForm.submitted && phone.invalid" class="validation-error">
+                                    <div *ngIf="phone.errors && phone.errors.pattern || phone.errors.maxlength || phone.errors.minlength">Must be a valid phone number with 10 numbers</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="location">Location</label>
+                                <input type="text" placeholder="Your location" [ngClass]="{ 'is-invalid': updateUserForm.submitted && location.invalid }" class="form-input form-control" name="location" #location="ngModel" id="location" required [(ngModel)]="profile.location" />
+                            </div>
+                            <div class="form-group">
+                                <button ngbTooltip="Click to update user profile" placement="right" type="submit" class="btn btn-default" [disabled]="!showForm">Save</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <p>
+                        <ngb-alert *ngIf="intro" type="info" (close)="closeIntro()">
+                          <strong>
+                            click on the basket to delete profile | click wrench to edit to delete profile
+                          </strong>
+                        </ngb-alert>
+                        <ngb-alert type="primary" [dismissible]="false" *ngIf="updateUserForm.submitted && !updateUserForm.form.valid">
+                            <strong>
+                                Please fill in all fields
+                            </strong>
+                        </ngb-alert>
+                        <ngb-alert type="success" [dismissible]="false" *ngIf="updateUserForm.submitted && updateUserForm.form.valid">
+                            <strong>
+                                Profile updated
+                            </strong>
+                        </ngb-alert>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+.ui__avatar{
+    width:100px;
+    height:100px;
+    background-color:#c5c5c5;
+}
+
+.ui__link{
+    display:flex;
+    position: absolute;
+    align-items: center;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+}
+
+.ui__name{
+    font-size:24px;
+    color:#fff;
+    padding:0 25px;
+    text-transform: uppercase;
+}
