@@ -29,46 +29,25 @@
       "location": "Lviv"
     },
     {
-      "id": 7,
+      "id": 6,
       "name": "qwe",
       "email": "qwe@qwe",
-      "phone": "1231245145",
+      "phone": "1234567890",
+      "location": "qwe"
+    },
+    {
+      "id": 7,
+      "name": "123",
+      "email": "qwe@qwe",
+      "phone": "1234512414",
       "location": "qwe"
     },
     {
       "id": 8,
-      "name": "qwewqrqwr",
+      "name": "qweqwe",
       "email": "qwe@qwe",
-      "phone": "1232142141",
-      "location": "wqeqweqweqw"
-    },
-    {
-      "id": 9,
-      "name": "qwewqrqwr",
-      "email": "qwe@qwe",
-      "phone": "1232142141",
-      "location": "wqeqweqweqw"
-    },
-    {
-      "id": 10,
-      "name": "qwe",
-      "email": "qwe@qwe",
-      "phone": "2131242142",
-      "location": "qwe"
-    },
-    {
-      "id": 11,
-      "name": "qwe",
-      "email": "qwe@qwe",
-      "phone": "2131242142",
-      "location": "qwe"
-    },
-    {
-      "id": 12,
-      "name": "qwe",
-      "email": "qwe@qwe",
-      "phone": "2131242142",
-      "location": "qwe"
+      "phone": "1234521321",
+      "location": "Kiev"
     }
   ]
 }

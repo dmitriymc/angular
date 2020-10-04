@@ -21,7 +21,7 @@ export class UsersFormComponent implements OnInit {
   @ViewChild('newUserForm') form: any;
 
   onSubmit(newUserForm: NgForm){
-    this.id = Math.max.apply(Math,this.usersData.store.users.map(obj => obj.id)) + 1
+    this.id = this.usersData.id + 1
     let item = {
       id: this.id,
       name: newUserForm.value.name,
