@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/models/user.model';
 import { UsersService } from 'src/app/users.service';
 
 @Component({
@@ -8,15 +9,17 @@ import { UsersService } from 'src/app/users.service';
 })
 export class UsersListComponent implements OnInit {
 
-  constructor(private usersData: UsersService) { }
+  public users: User[] = [];
 
-  users:any
+  constructor(private usersData: UsersService) {
+    usersData.loadUserData();
+    usersData._users.subscribe(users => {
+      this.users = users;
+    })
+  }
 
   ngOnInit(): void {
     
-    this.users = this.usersData.users
-    this.usersData.loadUserData()
-
   }
 
 }

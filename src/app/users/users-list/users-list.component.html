@@ -1,4 +1,4 @@
 <div class="users-list">
-   <div class="user-item" *ngFor="let user of users | async" [user]="user"></div>
-      
+   <div *ngIf="!users.length" class="users-empty">Server is not working <br />json-server --watch db.json</div>
+   <div class="user-item" *ngFor="let user of users" [user]="user"></div>  
 </div>

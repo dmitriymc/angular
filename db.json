@@ -1,53 +1,25 @@
 {
   "users": [
     {
-      "id": 2,
-      "name": "NAME SURNAME 2",
-      "email": "mail2@mail.com",
-      "phone": "0501234567",
-      "location": "Kherson"
-    },
-    {
-      "id": 3,
-      "name": "NAME SURNAME 3",
-      "email": "mail3@mail.com",
-      "phone": "0501234567",
-      "location": "Lviv"
-    },
-    {
-      "id": 4,
-      "name": "IVANOV IVAN IVANOVICH",
-      "email": "gmail4@gmail.com",
-      "phone": "0503456789",
-      "location": "Kiev"
-    },
-    {
-      "id": 5,
-      "name": "Petrov petr petrovich",
-      "email": "gmail5@gmail.com",
-      "phone": "0123456789",
-      "location": "Lviv"
-    },
-    {
-      "id": 6,
-      "name": "qwe",
+      "name": "name surname",
       "email": "qwe@qwe",
       "phone": "1234567890",
-      "location": "qwe"
+      "location": "Kiev",
+      "id": 1
     },
     {
-      "id": 7,
-      "name": "123",
+      "id": 2,
+      "name": "IVAN",
       "email": "qwe@qwe",
-      "phone": "1234512414",
-      "location": "qwe"
-    },
-    {
-      "id": 8,
-      "name": "qweqwe",
-      "email": "qwe@qwe",
-      "phone": "1234521321",
+      "phone": "5555555555",
       "location": "Kiev"
+    },
+    {
+      "name": "John",
+      "email": "qwe@qwe",
+      "phone": "1231231231",
+      "location": "Kherson",
+      "id": 3
     }
   ]
 }

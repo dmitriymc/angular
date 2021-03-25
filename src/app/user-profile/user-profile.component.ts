@@ -5,6 +5,7 @@ import { UsersService } from 'src/app/users.service';
 import { faTrashAlt, faWrench } from '@fortawesome/free-solid-svg-icons';
 import { NgForm } from '@angular/forms'
 import { map } from 'rxjs/operators'
+import { User } from '../models/user.model';
 
 
 @Component({
@@ -14,25 +15,27 @@ import { map } from 'rxjs/operators'
 })
 export class UserProfileComponent implements OnInit {
 
-  profile:any;
+  profile: User = null ;
   showForm: boolean = false;
   faTrashAlt = faTrashAlt;
   faWrench = faWrench;
   
-  constructor(private usersData: UsersService, private route: ActivatedRoute,private location: Location) {
-
+  constructor(
+    private usersData: UsersService, 
+    private route: ActivatedRoute,
+    private location: Location) 
+  {
+    const id: number = +this.route.snapshot.paramMap.get('id');
+    this.usersData.loadUser(id)
+    this.usersData._user.subscribe(user => {
+      this.profile = user;
+    })
   }
 
   @ViewChild('updateUserForm') form: any;
 
   ngOnInit(): void {    
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.profile = this.usersData.users.pipe(
-      map(users => users.find(item => item.id === id))
-    )
-
-
-    this.usersData.loadUser(id)
+    
   }
 
   onSubmit(updateUserForm: NgForm, id: number){

@@ -10,20 +10,18 @@ import { UsersService } from 'src/app/users.service';
 })
 export class UsersFormComponent implements OnInit {
 
-  constructor(private usersData: UsersService) { }
+  public user: User
+  public users: User[]
+  public id: number
+  public intro: boolean = true
+  public profileCreated: boolean = false;
 
-  user: User
-  users: any
-  id: number
-  intro: boolean = true
-  value: any
+  constructor(private usersData: UsersService) { }
 
   @ViewChild('newUserForm') form: any;
 
   onSubmit(newUserForm: NgForm){
-    this.id = this.usersData.id + 1
     let item = {
-      id: this.id,
       name: newUserForm.value.name,
       email: newUserForm.value.email,
       phone: newUserForm.value.phone,
@@ -32,6 +30,9 @@ export class UsersFormComponent implements OnInit {
 
     if(this.form.valid){
       this.usersData.createUser(item)
+      this.profileCreated = true
+    }else{
+      this.profileCreated = false
     }
     
     

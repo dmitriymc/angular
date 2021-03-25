@@ -6,12 +6,11 @@ import { User } from './models/user.model';
 @Injectable({
   providedIn: 'root'
 })
+
 export class UsersService {
 
-  private _users = new BehaviorSubject<User[]>([]);
-  private store: {users: User[]} = {users:[]};
-  public id;
-  readonly users = this._users.asObservable();
+  public _users: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
+  public _user:BehaviorSubject<User> = new BehaviorSubject<User>(null);
   
   constructor(private http: HttpClient) { }
 
@@ -20,9 +19,7 @@ export class UsersService {
   loadUserData():void{
     this.http.get<User[]>('http://localhost:3000/users').subscribe(
       data => {
-        this.store.users = data;
-        this._users.next(Object.assign({}, this.store).users);
-        this.id = Math.max.apply(Math,this.store.users.map(obj => obj.id))
+        this._users.next(data);
       },
       error => console.log('error load users data')
     )
@@ -31,17 +28,7 @@ export class UsersService {
   loadUser(id:number):void{
     this.http.get<User>(`http://localhost:3000/users/${id}`).subscribe(
       data => {
-        let nf = true
-        this.store.users.forEach((item,index) => {
-          if(item.id === data.id){
-            this.store.users[index] = data;
-            nf = false
-          } 
-        });
-        if(nf){
-          this.store.users.push(data)
-        }
-        this._users.next(Object.assign({},this.store).users)
+        this._user.next(data);
       },
       error => console.log('error load user data')
     )
@@ -52,8 +39,7 @@ export class UsersService {
   createUser(user: User){
     this.http.post<User>('http://localhost:3000/users', user).subscribe(
       data => {
-        this.store.users.push(user),
-        this._users.next(Object.assign({},this.store).users)
+        this._users.next([...this._users.value, data])
       },
       error => console.log('error create user')  
     )
@@ -64,12 +50,8 @@ export class UsersService {
   updateUser(user: User){
     this.http.put<User>(`http://localhost:3000/users/${user.id}`, user).subscribe(
       data => {
-        this.store.users.forEach((u,index) => {
-          if(u.id === data.id){
-            this.store.users[index] = data
-          }
-        })
-        this._users.next(Object.assign({},this.store).users)
+        const index = this._users.value.findIndex(profile => profile.id === user.id);
+        this._users.next([...this._users.value, this._users.value[index] = data])
       },
       error => console.log('error update user')
     )
@@ -80,12 +62,7 @@ export class UsersService {
   removeUser(id: number){
     this.http.delete(`http://localhost:3000/users/${id}`).subscribe(
       data =>{
-        this.store.users.forEach((r,index) =>{
-          if(r.id === id){
-            this.store.users.splice(index,1)
-          }
-        })
-        this._users.next(Object.assign({},this.store).users)
+        this._users.next(this._users.value.filter(user => user.id !== id));
       },
       error => console.log('error remove user')
     )
