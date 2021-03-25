@@ -1,4 +1,5 @@
-start json-server json-server --watch db.json
+START SERVER
+json-server --watch db.json
 
 # Angular
 
